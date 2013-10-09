@@ -1,10 +1,10 @@
 === oik-privacy-policy ===
-Contributors: bobbingwide
+Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: privacy policy, UK cookie law, EU cookie directive, oik
 Requires at least: 3.0.4
-Tested up to: 3.4
-Stable tag: trunk
+Tested up to: 3.6.1
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,14 +39,17 @@ YES. You can deactivate the plugin when you've generated your page.
 If you chose to retain the shortcodes in the sample text then you will still need to use the oik plugin.
 
 = From where did you get the sample privacy policy text? =
-[Business Link sample privacy policy](http://www.businesslink.gov.uk/bdotg/action/detail?itemId=1076142085&type=RESOURCES)
-The document was called Sample3_privacy_policy.doc
+The text was obtained from a document called Sample3_privacy_policy.doc, downloaded from Business Link's sample privacy policy page.
+Since May 2012 the page is no longer accessible. 
+[Download a PDF version from oik-plugins](http://www.oik-plugins.com/wp-content/uploads/2012/05/Sample3_privacy_policy.pdf)
 
 The wording for the Cookie categories sections came from the [ICC UK Cookie Guide](http://www.international-chamber.co.uk/components/com_wordpress/wp/wp-content/uploads/2012/04/icc_uk_cookie_guide.pdf)
 
 = Is it OK to use this text? =
-Yes, Business Link provide a number of samples. The introduction page for the Sample IT policies, disclaimers and notices page says:
+Yes, Business Link provided a number of samples. The introduction page for the Sample IT policies, disclaimers and notices page said:
 This guide gives sample wording for common internet-related statements and notices. It outlines the main issues that these notices should cover, which in turn will help you to write your own statements tailored to your business' needs. These sample internet policies and notices can be used and modified without copyright infringement.
+
+You can still find this same text on [NI Business Info - sample IT policies, disclaimers and notices](http://nibusinessinfo.co.uk/content/sample-it-policies-disclaimers-and-notices)
 
 = Which of the cookie categories do I need? =
 
@@ -66,8 +69,9 @@ or
 
 = Where do I find the list of cookies my site uses? =
 You should do a cookie audit. 
+Either use the [cookie-cat](http:/www.wordpress.org/extend/plugins/cookie-cat/) plugin or perform a cookie audit. For more information on cookies that WordPress websites may use visit the [cookie-cat website](http://www.cookie-cat.co.uk)
 
-* I recommend looking at [Cookie Control by Civic UK](http://www.civicuk.com/cookie-law/index)
+* I also recommend looking at [Cookie Control by Civic UK](http://www.civicuk.com/cookie-law/index)
 * See [Cookie Audits and Privacy Policy](http://civicuk.com/cookie-law/deployment#audit)
 * Also look at ICO's privacy notice for the table of cookies they use: [ICO Privacy Notice](http://www.ico.gov.uk/Global/privacy_statement.aspx)
 
@@ -87,8 +91,12 @@ The *WP-Policies* plugin provided a number of policies, including:
 These may be added to oik-privacy-policy plugin in the future. Let us know your requirements.
 
 = Where can I find more information? = 
-If you are in the UK then see 
-[Business Link's sample IT policies, disclaimers and notices](http://www.businesslink.gov.uk/bdotg/action/layer?r.i=1076142085&r.l1=1073861197&r.l2=1074448560&r.l3=1076141950&r.s=sc&r.t=RESOURCES&topicId=1076141950)
+If you are in the Northern Ireland then see 
+[Northern Irelance Business Info sample IT policies, disclaimers and notices](http://nibusinessinfo.co.uk/content/sample-privacy-policy)
+The documents stored on this site appear to be exactly the same as those which were on the UK business link website.
+
+The following link worked until May 2012, when Business Link broke it
+[Business Link sample IT policies, disclaimers and notices](http://www.businesslink.gov.uk/bdotg/action/layer?r.i=1076142085&r.l1=1073861197&r.l2=1074448560&r.l3=1076141950&r.s=sc&r.t=RESOURCES&topicId=1076141950)
 
 For cookie directives see:
 
@@ -104,10 +112,19 @@ For cookie directives see:
 1. Sample generated page: from What is a cookie? 
 
 == Upgrade Notice ==
+= 1.1 = 
+* Depends upon oik version 1.17 or higher.  
+
 = 1.0 = 
 * Depends upon oik version 1.13 or higher.
 
 == Changelog ==
+= 1.1 = 
+* Changed: Updated readme.txt - Business Link website has been redeveloped - samples still available from NI Business Info 
+* Changed: Updated readme.txt - Use the cookie-cat plugin to create a table of cookies in your Privacy policy
+* Changed: Improved dependency checking using functions in a 'common' file  ( admin/oik-activation.php )
+* Changed: Now responds to "oik_admin_menu" action.
+
 = 1.0 =
 * initial version. Works with oik version 1.13 or higher 
 

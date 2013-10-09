@@ -1,7 +1,7 @@
-<?php // (C) Copyright Bobbing Wide 2012
+<?php // (C) Copyright Bobbing Wide 2012, 2013
 
 /**
- * Display a message when oik-nivo-slider is not fully functional due to the dependencies not being activated or installed
+ * Display a message when oik-privacy-policy is not fully functional due to the dependencies not being activated or installed
  * Note: We can't use oik APIs here as we don't know if it's activated.
  * If the message is issued due to a version mismatch then there is a chance that one plugin attempts to use
  * functions that are not available in the dependent plugin. How do we manage this?
@@ -25,22 +25,6 @@ function oik_privacy_policy_inactive( $plugin=null, $dependencies=null ) {
     $message .= "</tr>";
   }
   echo $message; 
-}
-
-/**
- * Test if oik-privacy-policy is functional
- * 
- * Unless oik is installed and activated oik-privacy-policy won't do anything
- * Note: If oik is installed and activated then we shouldn't have any problem
- * unless there's a version number mismatch.
-*/
-function oik_privacy_policy_lazy_activation( $plugin=null, $dependencies=null, $callback=null ) {
-  if ( function_exists( "oik_depends" ) ) {  
-    /* Good - oik appears to be activated and loaded */
-    oik_depends( $plugin, $dependencies, $callback );
-  } else {
-    call_user_func( $callback, $plugin, $dependencies );
-  }   
 }
 
 /** 
