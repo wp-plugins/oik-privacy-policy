@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: privacy policy, UK cookie law, EU cookie directive, oik
 Requires at least: 3.0.4
-Tested up to: 3.6.1
+Tested up to: 3.7.1
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,7 +69,7 @@ or
 
 = Where do I find the list of cookies my site uses? =
 You should do a cookie audit. 
-Either use the [cookie-cat](http:/www.wordpress.org/extend/plugins/cookie-cat/) plugin or perform a cookie audit. For more information on cookies that WordPress websites may use visit the [cookie-cat website](http://www.cookie-cat.co.uk)
+Either use the [cookie-cat](http://www.wordpress.org/extend/plugins/cookie-cat/) plugin or perform a cookie audit. For more information on cookies that WordPress websites may use visit the [cookie-cat website](http://www.cookie-cat.co.uk)
 
 * I also recommend looking at [Cookie Control by Civic UK](http://www.civicuk.com/cookie-law/index)
 * See [Cookie Audits and Privacy Policy](http://civicuk.com/cookie-law/deployment#audit)

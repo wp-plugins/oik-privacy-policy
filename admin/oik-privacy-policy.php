@@ -261,11 +261,11 @@ function oik_privacy_policy_generate() {
 
 if ( !function_exists( "_bw_create_page" ) ) {
 function _bw_create_page( $page, $post_type="page", $content=null ) {
-  // p( "Creating $post_type: $page" );
-  $post = array( 'post_type' => $post_type,
-     'post_status' => 'publish',
-     'post_title' => $page,
-     );
+  $post = array( 'post_type' => $post_type
+               , 'post_status' => 'publish'
+               , 'post_title' => $page
+               , 'comment_status' => 'closed'
+               );
   if ( $content ) {
     $post['post_content'] = $content;
   } else {   
