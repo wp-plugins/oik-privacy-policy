@@ -2,9 +2,9 @@
 Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: privacy policy, UK cookie law, EU cookie directive, oik
-Requires at least: 3.0.4
-Tested up to: 3.7.1
-Stable tag: 1.1
+Requires at least: 3.9
+Tested up to: 4.0
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,12 @@ For cookie directives see:
 1. Sample generated page: from What is a cookie? 
 
 == Upgrade Notice ==
+= 1.3= 
+* Tested with WordPress 4.0. Now dependent upon oik v2.2 or higher.
+
+= 1.2 = 
+* Now dependent upon oik base plugin v2.1 or higher for a localized version
+
 = 1.1 = 
 * Depends upon oik version 1.17 or higher.  
 
@@ -119,6 +125,14 @@ For cookie directives see:
 * Depends upon oik version 1.13 or higher.
 
 == Changelog ==
+= 1.3 =
+* Tested: With WordPress 3.9 through 4.0
+
+= 1.2 =
+* Changed: Internationalized and created a localized version for the "bb_BB" locale
+* Changed: Now depends on oik version 2.1 or higher for i18n and l10n capability to take effect
+* Tested: With WordPress 3.8
+
 = 1.1 = 
 * Changed: Updated readme.txt - Business Link website has been redeveloped - samples still available from NI Business Info 
 * Changed: Updated readme.txt - Use the cookie-cat plugin to create a table of cookies in your Privacy policy

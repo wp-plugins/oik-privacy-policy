@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2012, 2013
+<?php // (C) Copyright Bobbing Wide 2012-2014
 
 /**
  * Display a message when oik-privacy-policy is not fully functional due to the dependencies not being activated or installed
@@ -33,7 +33,7 @@ function oik_privacy_policy_inactive( $plugin=null, $dependencies=null ) {
 function oik_privacy_policy_lazy_admin_menu() {
   register_setting( 'oik_privacy_policy_options', 'bw_privacy_policy', 'oik_privacy_policy_options_validate' ); 
   //add_submenu_page( $parent slug, $page_title, $menu_title, $capability, $menu_slug, $function ); 
-  add_submenu_page( 'oik_menu', 'privacy policy setup', "privacy policy", 'manage_options', 'oik_privacy_policy', "oik_privacy_policy_options_do_page" );
+  add_submenu_page( 'oik_menu', 'privacy policy setup', __( "privacy policy", 'oik-privacy-policy' ), 'manage_options', 'oik_privacy_policy', "oik_privacy_policy_options_do_page" );
 }
 
 /**
@@ -52,11 +52,22 @@ function oik_privacy_policy_options_validate( $input ) {
   return( $input ); 
 }
 
-/**
- * Privacy policy page
-*/
-function oik_privacy_policy_options_do_page() {
+function oik_privacy_policy_i18n() {
+  if ( function_exists( "bw_context" ) ) {
+    bw_context( "textdomain", "oik-privacy-policy" );
+  }  
+}
 
+/**
+ * Display the oik Privacy policy admin page
+ * 
+ * Use process:
+ * Complete the fields in the Privacy policy template, using the checkbox to selectively include/exclude sections.
+ * Clicks on the Preview button to preview the policy
+ * When happy uses Generate to generate a new page, in the chosen menu  
+ */
+function oik_privacy_policy_options_do_page() {
+  oik_privacy_policy_i18n();
   $generate = bw_array_get( $_REQUEST, "_bw_privacy_policy_generate", null );
   if ( $generate ) {
     oik_privacy_policy_generate_page();
@@ -137,9 +148,10 @@ function oik_privacy_policy_options() {
   bw_textarea_cb_arr( $option, "Write to", $options, "data-protection-addr", $len, 2 );
   bw_textarea_cb_arr( $option, "Correction", $options, "data-correction", $len, 3 );
   
-  bw_tablerow( array( "", "<input type=\"submit\" name=\"ok\" value=\"Preview\" class=\"button-primary\"/>" ) ); 
+  //bw_tablerow( array( "", "<input type=\"submit\" name=\"ok\" value=\"Preview\" class=\"button-primary\"/>" ) ); 
   
-  etag( "table" ); 			
+  etag( "table" ); 
+  e( isubmit( "ok", __("Preview", "oik-privacy-policy" ), null, "button-primary" ) ); 
   etag( "form" );
   
   bw_flush();
@@ -188,10 +200,10 @@ function oik_privacy_policy_preview() {
 }
 
 function oik_privacy_policy_reset_form() {
-
   bw_form( );
-  $reset = "<input type=\"submit\" name=\"_bw_privacy_policy_reset\" value=\"Reset to defaults\" class=\"button-secondary\"/>";
-  e ( $reset );
+  //$reset = "<input type=\"submit\" name=\"_bw_privacy_policy_reset\" value=\"Reset to defaults\" class=\"button-secondary\"/>";
+  //e ( $reset );
+  e( isubmit( "_bw_privacy_policy_reset", __("Reset to defaults", "oik-privacy-policy" ), null, "button-secondary" ) ); 
   etag( "form" );
 }
 
@@ -211,7 +223,7 @@ function oik_privacy_policy_select_menu() {
   if ( $auto_add ) {
     bw_tablerow( array("&nbsp;", "The new page will be added to menu: " . $terms[$auto_add] ) );
   } else { 
-    bw_select( "bw_nav_menu", "Add to menu", $auto_add, array( '#options' => $terms) );
+    bw_select( "bw_nav_menu", __( "Add to menu", "oik-privacy-policy" ), $auto_add, array( '#options' => $terms) );
   }
   return( $menus );
 }
@@ -234,9 +246,9 @@ function oik_privacy_policy_generate_page() {
     }
     sdiv( "updated", "message" );
     sp();
-    e( "Page created:" );
+    bwt( "Page created:" );
     e( "&nbsp;" . $title . "&nbsp;" );
-    alink( null, get_permalink( $page_id ), "View page" );
+    alink( null, get_permalink( $page_id ), __( "View page" ) );
     ep();
     ediv();
   } else {
@@ -252,10 +264,11 @@ function oik_privacy_policy_generate_page() {
 function oik_privacy_policy_generate() {
   e( '<form method="post" action="" class="inline">' ); 
   stag( 'table class="form-table"' );
-  bw_textfield( "bw_privacy_policy_title", 30, "Page title", "Privacy policy" );
+  bw_textfield( "bw_privacy_policy_title", 30, "Page title", __( "Privacy policy", 'oik-privacy-policy') );
   oik_privacy_policy_menu_selector();
-  bw_tablerow( array( "", "<input type=\"submit\" name=\"_bw_privacy_policy_generate\" value=\"Generate page\" class=\"button-primary\"/>") ); 
-  etag( "table" ); 			
+  //bw_tablerow( array( "", "<input type=\"submit\" name=\"_bw_privacy_policy_generate\" value=\"Generate page\" class=\"button-primary\"/>") ); 
+  etag( "table" );
+  e( isubmit( "_bw_privacy_policy_generate", __("Generate page", "oik-privacy-policy" ), null, "button-primary" ) ); 
   etag( "form" );
 }
 
@@ -284,14 +297,14 @@ function oik_privacy_policy_menu_selector() {
   oik_require( "bw_metadata.inc" );
   $menus = wp_get_nav_menus( $args = array() );
   $terms = bw_term_array( $menus );
-  $terms[0] = "none";
+  $terms[0] = __( "none" );
   
   $auto_add = get_option( 'nav_menu_options' );
   $auto_add = bw_array_get( $auto_add, "auto_add", 0 );
   $auto_add = bw_array_get( $auto_add, 0, 0 );
   
   if ( $auto_add ) {
-    bw_tablerow( array("&nbsp;", "The new page will be added to menu: " . $terms[$auto_add] ) );
+    bw_tablerow( array("&nbsp;", __( "The new page will be added to menu: ", 'oik-privacy-policy' ) . $terms[$auto_add] ) );
   } else { 
     bw_select( "bw_nav_menu", "Add to menu", $auto_add, array( '#options' => $terms) );
   }
